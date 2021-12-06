@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './constants/routes.dart';
 import 'screens/categories_screen.dart';
 import 'screens/meals_screen.dart';
+import 'screens/meal_detail_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,28 +20,41 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-        title: 'My Recipes',
-        theme: theme.copyWith(
-            colorScheme: theme.colorScheme.copyWith(
-              primary: Colors.teal,
-              secondary: Colors.pink,
+      title: 'My Recipes',
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.teal,
+          secondary: Colors.pink,
+        ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: const TextStyle(
+                color: Color(0xff143333),
+              ),
+              bodyText2: const TextStyle(
+                color: Color(0xff143333),
+              ),
+              headline1: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+                fontWeight: FontWeight.bold,
+              ),
+              headline2: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
-            textTheme: ThemeData.light().textTheme.copyWith(
-                bodyText1: const TextStyle(
-                  color: Color(0xff143333),
-                ),
-                bodyText2: const TextStyle(
-                  color: Color(0xff143333),
-                ),
-                headline1: const TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'RobotoCondensed',
-                  fontWeight: FontWeight.bold,
-                ))),
-        // home: const CategoriesScreen(),
-        routes: {
-          Routes.home: (ctx) => const CategoriesScreen(),
-          Routes.meals: (ctx) => const MealsScreen(),
-        });
+      ),
+      // home: const CategoriesScreen(),
+      routes: {
+        Routes.home: (ctx) => const CategoriesScreen(),
+        Routes.meals: (ctx) => const MealsScreen(),
+        Routes.mealDetail: (ctx) => const MealDetailScreen(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => const CategoriesScreen());
+      },
+    );
   }
 }
