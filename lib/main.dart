@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_recipes/screens/tabs_screen.dart';
 
 import './constants/routes.dart';
 import 'screens/categories_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'My Recipes',
+      debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
           primary: Colors.teal,
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const CategoriesScreen(),
       routes: {
-        Routes.home: (ctx) => const CategoriesScreen(),
+        Routes.home: (ctx) => const TabScreen(),
         Routes.meals: (ctx) => const MealsScreen(),
         Routes.mealDetail: (ctx) => const MealDetailScreen(),
       },
